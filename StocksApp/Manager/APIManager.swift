@@ -11,8 +11,10 @@ import Foundation
 
 final class APIManager {
     
-    private init() {}
+    
     static let shared = APIManager()
+    private init() {}
+    
     
     
     private struct Constant {
@@ -36,7 +38,6 @@ final class APIManager {
     
     
     private func url(forEndpoint endpoint: Endpoint, queryParams: [String:Any] = [:]) -> URL? {
-        
         return nil
     }
     

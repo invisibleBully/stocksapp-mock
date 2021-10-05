@@ -17,8 +17,6 @@ final class PersistenceManager {
     
     
     
-    
-    
     private struct Constant {
         
     }
