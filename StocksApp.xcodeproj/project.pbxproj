@@ -10,12 +10,14 @@
 		8489A8D2270C6396005B8332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8D1270C6396005B8332 /* AppDelegate.swift */; };
 		8489A8D4270C6396005B8332 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8D3270C6396005B8332 /* SceneDelegate.swift */; };
 		8489A8D6270C6396005B8332 /* WatchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8D5270C6396005B8332 /* WatchListViewController.swift */; };
-		8489A8D9270C6396005B8332 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8489A8D7270C6396005B8332 /* Main.storyboard */; };
 		8489A8DB270C639A005B8332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8489A8DA270C639A005B8332 /* Assets.xcassets */; };
 		8489A8DE270C639A005B8332 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8489A8DC270C639A005B8332 /* LaunchScreen.storyboard */; };
 		8489A8ED270C6796005B8332 /* TopStoriesNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8EC270C6796005B8332 /* TopStoriesNewsViewController.swift */; };
 		8489A8EF270C67BD005B8332 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8EE270C67BD005B8332 /* SearchResultsViewController.swift */; };
 		8489A8F1270C67CC005B8332 /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8F0270C67CC005B8332 /* StockDetailViewController.swift */; };
+		8489A8F3270C7820005B8332 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8F2270C7820005B8332 /* APIManager.swift */; };
+		8489A8F5270C7832005B8332 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8F4270C7832005B8332 /* PersistenceManager.swift */; };
+		8489A8F7270C7840005B8332 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8F6270C7840005B8332 /* HapticsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,13 +25,15 @@
 		8489A8D1270C6396005B8332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8489A8D3270C6396005B8332 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8489A8D5270C6396005B8332 /* WatchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListViewController.swift; sourceTree = "<group>"; };
-		8489A8D8270C6396005B8332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8489A8DA270C639A005B8332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8489A8DD270C639A005B8332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8489A8DF270C639A005B8332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8489A8EC270C6796005B8332 /* TopStoriesNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesNewsViewController.swift; sourceTree = "<group>"; };
 		8489A8EE270C67BD005B8332 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		8489A8F0270C67CC005B8332 /* StockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
+		8489A8F2270C7820005B8332 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		8489A8F4270C7832005B8332 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		8489A8F6270C7840005B8332 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,9 @@
 		8489A8E8270C63EE005B8332 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				8489A8F2270C7820005B8332 /* APIManager.swift */,
+				8489A8F4270C7832005B8332 /* PersistenceManager.swift */,
+				8489A8F6270C7840005B8332 /* HapticsManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -127,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				8489A8DC270C639A005B8332 /* LaunchScreen.storyboard */,
-				8489A8D7270C6396005B8332 /* Main.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -191,7 +197,6 @@
 			files = (
 				8489A8DE270C639A005B8332 /* LaunchScreen.storyboard in Resources */,
 				8489A8DB270C639A005B8332 /* Assets.xcassets in Resources */,
-				8489A8D9270C6396005B8332 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,26 +207,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8489A8F7270C7840005B8332 /* HapticsManager.swift in Sources */,
 				8489A8F1270C67CC005B8332 /* StockDetailViewController.swift in Sources */,
 				8489A8D6270C6396005B8332 /* WatchListViewController.swift in Sources */,
 				8489A8ED270C6796005B8332 /* TopStoriesNewsViewController.swift in Sources */,
+				8489A8F5270C7832005B8332 /* PersistenceManager.swift in Sources */,
 				8489A8D2270C6396005B8332 /* AppDelegate.swift in Sources */,
 				8489A8D4270C6396005B8332 /* SceneDelegate.swift in Sources */,
 				8489A8EF270C67BD005B8332 /* SearchResultsViewController.swift in Sources */,
+				8489A8F3270C7820005B8332 /* APIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8489A8D7270C6396005B8332 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8489A8D8270C6396005B8332 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8489A8DC270C639A005B8332 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
