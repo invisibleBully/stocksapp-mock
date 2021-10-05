@@ -14,6 +14,7 @@ class WatchListViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupSearchController()
+        setupTitleView()
     }
     
     
@@ -22,6 +23,20 @@ class WatchListViewController: UIViewController {
         let searchViewController = UISearchController(searchResultsController: resultsViewController)
         searchViewController.searchResultsUpdater = self
         navigationItem.searchController = searchViewController
+    }
+    
+    
+    private func setupTitleView() {
+        let titleView = UIView(
+            frame: CGRect(x: 0, y: 0, width: view.width, height: navigationController?.navigationBar.height ?? 100)
+        )
+        
+        
+        let label = UILabel(frame: CGRect(x: 10, y: 0, width: titleView.width - 20, height: titleView.height))
+        label.text = "Stocks"
+        label.font = .systemFont(ofSize: 28, weight: .bold)
+        titleView.addSubview(label)
+        navigationItem.titleView = titleView
     }
     
     
@@ -38,10 +53,11 @@ extension WatchListViewController: UISearchResultsUpdating {
               !query.trimmingCharacters(in: .whitespaces).isEmpty else {
             return
         }
+        print(query)
         //optimize to reduce number of searches when user is done typing...
         //call API to search
         //update result controller
-        print(query)
+        
     }
     
     
