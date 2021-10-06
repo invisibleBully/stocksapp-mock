@@ -20,6 +20,7 @@ class WatchListViewController: UIViewController {
     
     private func setupSearchController(){
         let resultsViewController = SearchResultsViewController()
+        resultsViewController.delegate = self
         let searchViewController = UISearchController(searchResultsController: resultsViewController)
         searchViewController.searchResultsUpdater = self
         navigationItem.searchController = searchViewController
@@ -30,7 +31,6 @@ class WatchListViewController: UIViewController {
         let titleView = UIView(
             frame: CGRect(x: 0, y: 0, width: view.width, height: navigationController?.navigationBar.height ?? 100)
         )
-        
         
         let label = UILabel(frame: CGRect(x: 10, y: 0, width: titleView.width - 20, height: titleView.height))
         label.text = "Stocks"
@@ -57,7 +57,18 @@ extension WatchListViewController: UISearchResultsUpdating {
         //optimize to reduce number of searches when user is done typing...
         //call API to search
         //update result controller
-        
+        resultsViewController.update(withResults: ["GOOG","APPL","UBR"])
+    }
+    
+    
+}
+
+
+
+extension WatchListViewController: SearchResultViewControllerDelegate {
+    
+    func searchResultsViewControllerDidSelect(searchResult: String) {
+        print("Search Result: \(searchResult)")
     }
     
     

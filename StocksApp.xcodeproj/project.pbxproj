@@ -19,6 +19,7 @@
 		8489A8F5270C7832005B8332 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8F4270C7832005B8332 /* PersistenceManager.swift */; };
 		8489A8F7270C7840005B8332 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8F6270C7840005B8332 /* HapticsManager.swift */; };
 		8489A8F9270CB4CD005B8332 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8F8270CB4CD005B8332 /* Extension.swift */; };
+		8489A8FB270DE365005B8332 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8FA270DE365005B8332 /* SearchResultTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		8489A8F4270C7832005B8332 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		8489A8F6270C7840005B8332 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		8489A8F8270CB4CD005B8332 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		8489A8FA270DE365005B8332 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		8489A8E6270C63D4005B8332 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8489A8FA270DE365005B8332 /* SearchResultTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8489A8F7270C7840005B8332 /* HapticsManager.swift in Sources */,
+				8489A8FB270DE365005B8332 /* SearchResultTableViewCell.swift in Sources */,
 				8489A8F1270C67CC005B8332 /* StockDetailViewController.swift in Sources */,
 				8489A8D6270C6396005B8332 /* WatchListViewController.swift in Sources */,
 				8489A8ED270C6796005B8332 /* TopStoriesNewsViewController.swift in Sources */,
