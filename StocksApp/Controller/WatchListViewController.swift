@@ -53,11 +53,23 @@ extension WatchListViewController: UISearchResultsUpdating {
               !query.trimmingCharacters(in: .whitespaces).isEmpty else {
             return
         }
-        print(query)
         //optimize to reduce number of searches when user is done typing...
+        
+        
+        
         //call API to search
+        APIManager.shared.search(query: query) { result  in
+            switch result {
+            case .success(let response):
+                resultsViewController.update(withResults: response.result)
+            case .failure(let error):
+                print("Error: \(error)")
+                break
+            }
+        }
+        
         //update result controller
-        resultsViewController.update(withResults: ["GOOG","APPL","UBR"])
+        //resultsViewController.update(withResults: ["GOOG","APPL","UBR"])
     }
     
     
@@ -67,7 +79,7 @@ extension WatchListViewController: UISearchResultsUpdating {
 
 extension WatchListViewController: SearchResultViewControllerDelegate {
     
-    func searchResultsViewControllerDidSelect(searchResult: String) {
+    func searchResultsViewControllerDidSelect(searchResult: SearchResult) {
         print("Search Result: \(searchResult)")
     }
     

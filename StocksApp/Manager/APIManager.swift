@@ -18,9 +18,9 @@ final class APIManager {
     
     
     private struct Constant {
-        static let API_KEY = ""
-        static let SANDBOX_API_KEY = ""
-        static let BASE_URL = ""
+        static let API_KEY = "c5eso1iad3ib660qogng"
+        static let SANDBOX_API_KEY = "sandbox_c5eso1iad3ib660qogo0"
+        static let BASE_URL = "https://finnhub.io/api/v1/"
     }
     
     
@@ -38,13 +38,26 @@ final class APIManager {
     
     
     private func url(forEndpoint endpoint: Endpoint, queryParams: [String:Any] = [:]) -> URL? {
-        return nil
+        
+        var urlString = Constant.BASE_URL + endpoint.rawValue
+        var queryItems =  [URLQueryItem]()
+        
+        for (name, value) in queryParams {
+            queryItems.append(.init(name: name, value: "\(value)"))
+        }
+        queryItems.append(.init(name: "token", value: Constant.API_KEY))
+        let queryString  = queryItems.map {"\($0.name)=\($0.value ?? "")"}.joined(separator: "&")
+        urlString += "?" + queryString
+        
+        
+        return URL(string: urlString)
     }
     
     
     
     
-    private func request<T: Codable>(url: URL?, expecting: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+    
+    private func request<T: Codable>(url: URL?, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         
         guard let url = url else {
             completion(.failure(APIError.invalidUrl))
@@ -62,7 +75,7 @@ final class APIManager {
             }
             
             do {
-                let result = try JSONDecoder().decode(expecting, from: data)
+                let result = try JSONDecoder().decode(type, from: data)
                 completion(.success(result))
             }catch {
                 completion(.failure(error))
@@ -72,6 +85,17 @@ final class APIManager {
         task.resume()
     }
     
+    
+    
+    
+    
+    public func search(query: String, completion: @escaping (Result<SearchResponse,Error>) -> Void){
+        
+        guard let url = url(forEndpoint: .search, queryParams: ["q":query]) else {
+            return
+        }
+        request(url: url, type: SearchResponse.self, completion: completion)
+    }
     
     
     

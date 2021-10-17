@@ -11,7 +11,7 @@ import UIKit
 
 
 protocol SearchResultViewControllerDelegate: AnyObject {
-    func searchResultsViewControllerDidSelect(searchResult: String)
+    func searchResultsViewControllerDidSelect(searchResult: SearchResult)
 }
 
 
@@ -20,7 +20,7 @@ class SearchResultsViewController: UIViewController {
     
     
     weak var delegate: SearchResultViewControllerDelegate?
-    var results = [String]()
+    var results = [SearchResult]()
     
     
     
@@ -54,9 +54,12 @@ class SearchResultsViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    func update(withResults results: [String]) {
+    func update(withResults results: [SearchResult]) {
         self.results = results
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
     }
     
     
@@ -70,7 +73,7 @@ extension SearchResultsViewController: UITableViewDataSource, UITableViewDelegat
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return results.count
     }
     
     
@@ -80,15 +83,17 @@ extension SearchResultsViewController: UITableViewDataSource, UITableViewDelegat
             return UITableViewCell()
         }
         
-        cell.textLabel?.text = "AAPL"
-        cell.detailTextLabel?.text = "Apple Inc."
+        let result = results[indexPath.row]
+        cell.textLabel?.text = result.symbol
+        cell.detailTextLabel?.text = result.displaySymbol
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.searchResultsViewControllerDidSelect(searchResult: "AAPL")
+        let selectedResult = results[indexPath.row]
+        delegate?.searchResultsViewControllerDidSelect(searchResult: selectedResult)
     }
     
     
