@@ -24,6 +24,7 @@ class WatchListViewController: UIViewController {
         let searchViewController = UISearchController(searchResultsController: resultsViewController)
         searchViewController.searchResultsUpdater = self
         navigationItem.searchController = searchViewController
+        //navigationItem.searchController?.searchBar.searchTextField.font = UIFont.systemFont(ofSize: 12)
     }
     
     
@@ -51,8 +52,8 @@ extension WatchListViewController: UISearchResultsUpdating {
         guard let query = searchController.searchBar.text,
               let resultsViewController = searchController.searchResultsController as? SearchResultsViewController,
               !query.trimmingCharacters(in: .whitespaces).isEmpty else {
-            return
-        }
+                  return
+              }
         //optimize to reduce number of searches when user is done typing...
         
         
@@ -61,7 +62,9 @@ extension WatchListViewController: UISearchResultsUpdating {
         APIManager.shared.search(query: query) { result  in
             switch result {
             case .success(let response):
-                resultsViewController.update(withResults: response.result)
+                DispatchQueue.main.async {
+                    resultsViewController.update(withResults: response.result)
+                }
             case .failure(let error):
                 print("Error: \(error)")
                 break

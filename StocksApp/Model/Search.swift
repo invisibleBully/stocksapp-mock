@@ -8,8 +8,6 @@
 import Foundation
 
 
-
-
 struct SearchResult: Codable {
     let description: String
     let displaySymbol: String

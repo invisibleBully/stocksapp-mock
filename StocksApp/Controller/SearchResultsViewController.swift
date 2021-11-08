@@ -54,11 +54,11 @@ class SearchResultsViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    
+    
     func update(withResults results: [SearchResult]) {
         self.results = results
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
         
     }
     
@@ -85,7 +85,7 @@ extension SearchResultsViewController: UITableViewDataSource, UITableViewDelegat
         
         let result = results[indexPath.row]
         cell.textLabel?.text = result.symbol
-        cell.detailTextLabel?.text = result.displaySymbol
+        cell.detailTextLabel?.text = result.description
         return cell
     }
     
