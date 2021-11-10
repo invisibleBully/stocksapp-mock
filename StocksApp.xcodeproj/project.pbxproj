@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,7 @@
 		8489A8D6270C6396005B8332 /* WatchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8D5270C6396005B8332 /* WatchListViewController.swift */; };
 		8489A8DB270C639A005B8332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8489A8DA270C639A005B8332 /* Assets.xcassets */; };
 		8489A8DE270C639A005B8332 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8489A8DC270C639A005B8332 /* LaunchScreen.storyboard */; };
-		8489A8ED270C6796005B8332 /* TopStoriesNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8EC270C6796005B8332 /* TopStoriesNewsViewController.swift */; };
+		8489A8ED270C6796005B8332 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8EC270C6796005B8332 /* NewsViewController.swift */; };
 		8489A8EF270C67BD005B8332 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8EE270C67BD005B8332 /* SearchResultsViewController.swift */; };
 		8489A8F1270C67CC005B8332 /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8F0270C67CC005B8332 /* StockDetailViewController.swift */; };
 		8489A8F3270C7820005B8332 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8F2270C7820005B8332 /* APIManager.swift */; };
@@ -33,7 +33,7 @@
 		8489A8DA270C639A005B8332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8489A8DD270C639A005B8332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8489A8DF270C639A005B8332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8489A8EC270C6796005B8332 /* TopStoriesNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesNewsViewController.swift; sourceTree = "<group>"; };
+		8489A8EC270C6796005B8332 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		8489A8EE270C67BD005B8332 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		8489A8F0270C67CC005B8332 /* StockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
 		8489A8F2270C7820005B8332 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				8489A8D5270C6396005B8332 /* WatchListViewController.swift */,
-				8489A8EC270C6796005B8332 /* TopStoriesNewsViewController.swift */,
+				8489A8EC270C6796005B8332 /* NewsViewController.swift */,
 				8489A8EE270C67BD005B8332 /* SearchResultsViewController.swift */,
 				8489A8F0270C67CC005B8332 /* StockDetailViewController.swift */,
 			);
@@ -160,7 +160,6 @@
 				59B8B6626E269EA2DFCC2642 /* Pods-StocksApp.debug.xcconfig */,
 				B596E042917A121BB46B237B /* Pods-StocksApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -289,7 +288,7 @@
 				8489A8FB270DE365005B8332 /* SearchResultTableViewCell.swift in Sources */,
 				8489A8F1270C67CC005B8332 /* StockDetailViewController.swift in Sources */,
 				8489A8D6270C6396005B8332 /* WatchListViewController.swift in Sources */,
-				8489A8ED270C6796005B8332 /* TopStoriesNewsViewController.swift in Sources */,
+				8489A8ED270C6796005B8332 /* NewsViewController.swift in Sources */,
 				8489A8F5270C7832005B8332 /* PersistenceManager.swift in Sources */,
 				8489A8F9270CB4CD005B8332 /* Extension.swift in Sources */,
 				8489A8D2270C6396005B8332 /* AppDelegate.swift in Sources */,
