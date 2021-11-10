@@ -9,6 +9,9 @@ import UIKit
 
 class TopStoriesNewsViewController: UIViewController {
     
+    public let tableView = UITableView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
