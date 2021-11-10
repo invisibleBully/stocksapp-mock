@@ -8,9 +8,12 @@
 import UIKit
 
 class StockDetailViewController: UIViewController {
-
+    
+    //symbol, company name, any chart data we may have 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
     }
-
+    
 }

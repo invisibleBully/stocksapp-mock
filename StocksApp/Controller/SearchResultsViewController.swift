@@ -26,8 +26,7 @@ class SearchResultsViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(SearchResultTableViewCell.self,
-                           forCellReuseIdentifier: SearchResultTableViewCell.identifier)
+        tableView.register(SearchResultTableViewCell.self,forCellReuseIdentifier: SearchResultTableViewCell.identifier)
         return tableView
     }()
     
@@ -59,7 +58,6 @@ class SearchResultsViewController: UIViewController {
     func update(withResults results: [SearchResult]) {
         self.results = results
         self.tableView.reloadData()
-        
     }
     
     

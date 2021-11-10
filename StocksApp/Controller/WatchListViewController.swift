@@ -29,10 +29,7 @@ class WatchListViewController: UIViewController {
     
     
     private func setupTitleView() {
-        let titleView = UIView(
-            frame: CGRect(x: 0, y: 0, width: view.width, height: navigationController?.navigationBar.height ?? 100)
-        )
-        
+        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: navigationController?.navigationBar.height ?? 100))
         let label = UILabel(frame: CGRect(x: 10, y: 0, width: titleView.width - 20, height: titleView.height))
         label.text = "Stocks"
         label.font = .systemFont(ofSize: 28, weight: .bold)
@@ -52,8 +49,8 @@ extension WatchListViewController: UISearchResultsUpdating {
         guard let query = searchController.searchBar.text,
               let resultsViewController = searchController.searchResultsController as? SearchResultsViewController,
               !query.trimmingCharacters(in: .whitespaces).isEmpty else {
-                  return
-              }
+            return
+        }
         //optimize to reduce number of searches when user is done typing...
         
         
@@ -83,7 +80,12 @@ extension WatchListViewController: UISearchResultsUpdating {
 extension WatchListViewController: SearchResultViewControllerDelegate {
     
     func searchResultsViewControllerDidSelect(searchResult: SearchResult) {
-        print("Search Result: \(searchResult)")
+        navigationItem.searchController?.searchBar.resignFirstResponder()
+        let stockDetailController = StockDetailViewController()
+        let navigationController = UINavigationController(rootViewController: stockDetailController)
+        stockDetailController.title = searchResult.description
+        present(navigationController, animated: true, completion: nil)
+        
     }
     
     
