@@ -38,14 +38,22 @@ class NewsViewController: UIViewController {
     let tableView: UITableView =  {
         let table = UITableView()
         table.backgroundColor = .clear
+        table.register(NewsHeaderView.self, forHeaderFooterViewReuseIdentifier: NewsHeaderView.identifier)
         return table
     }()
+    
+    
+    
+    private var stories = [String]()
+    
     
     
     init(type: Type) {
         self.type = type
         super.init(nibName: nil, bundle: nil)
     }
+    
+    
     
     
     required init?(coder: NSCoder) {
@@ -115,12 +123,15 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: NewsHeaderView.identifier) as? NewsHeaderView else {return UIView()}
+        headerView.configure(withViewModel: .init(title: self.type.title,
+                                                  shouldShowActionButton: false))
+        return headerView
     }
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 70
+        return NewsHeaderView.preferredHeight
     }
     
     

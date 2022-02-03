@@ -22,6 +22,13 @@ final class HapticsManager {
     }
     
     
+    public func proLongVibrationForSelection(){
+        //Prolonged vibration for a selection tap interaction
+    }
+    
+    
+    
+    
     
     
 }
