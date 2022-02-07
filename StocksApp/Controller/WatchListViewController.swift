@@ -97,6 +97,7 @@ extension WatchListViewController: UISearchResultsUpdating {
 extension WatchListViewController: SearchResultViewControllerDelegate {
     
     func searchResultsViewControllerDidSelect(searchResult: SearchResult) {
+        
         navigationItem.searchController?.searchBar.resignFirstResponder()
         let stockDetailController = StockDetailViewController()
         let navigationController = UINavigationController(rootViewController: stockDetailController)

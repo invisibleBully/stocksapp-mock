@@ -26,6 +26,8 @@ final class APIManager {
     
     private enum Endpoint: String {
         case search
+        case topNews = "news"
+        case companyNews = "company-news"
     }
     
     
@@ -65,6 +67,7 @@ final class APIManager {
         }
         
         let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
+            
             guard let data = data, error == nil else {
                 if let error = error {
                     completion(.failure(error))
@@ -95,6 +98,32 @@ final class APIManager {
             return
         }
         request(url: url, type: SearchResponse.self, completion: completion)
+    }
+    
+    
+    
+    
+    public func news(for type: StoryType, completion: @escaping (Result<[NewsStory],Error>) -> Void) {
+        
+        //guard let url = url(forEndpoint: .topNews, queryParams: ["category":"general"]) else {
+        //return
+        //}
+        
+        switch type {
+            
+        case .topStories:
+            request(url: url(forEndpoint: .topNews, queryParams: ["category":"general"]), type: [NewsStory].self, completion: completion)
+        case .company(let symbol):
+            let today = Date()
+            let oneMonthBack = today.addingTimeInterval(-(60 * 60 * 24 * 2))
+            request(url: url(forEndpoint: .companyNews, queryParams: ["symbol" : symbol,
+                                                                      "from":DateFormatter.newsDateFormatter.string(from: oneMonthBack),
+                                                                      "to":DateFormatter.newsDateFormatter.string(from: today)
+                                                                     ]
+                            ), type: [NewsStory].self, completion: completion)
+        }
+        
+        
     }
     
     

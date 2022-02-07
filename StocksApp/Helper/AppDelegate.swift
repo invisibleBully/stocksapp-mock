@@ -28,14 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     private func debug(){
-//        APIManager.shared.search(query: "Apple", completion: { result  in
-//            switch result {
-//            case .success(let response):
-//                print("Response: \(response)")
-//            case .failure(let error):
-//                print("Error: \(error)")
-//            }
-//        })
+        
+        APIManager.shared.news(for: .company(symbol: "MSFT")) { result in
+            print("Result: \(result)")
+        }
+        
     }
     
 }

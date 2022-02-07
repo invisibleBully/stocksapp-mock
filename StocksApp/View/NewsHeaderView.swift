@@ -54,7 +54,7 @@ class NewsHeaderView: UITableViewHeaderFooterView {
         super.init(reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .secondarySystemBackground
         contentView.addSubViews(label, button)
-        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
     }
     
     
@@ -87,7 +87,7 @@ class NewsHeaderView: UITableViewHeaderFooterView {
     }
     
     
-    @objc private func didTapButton(){
+    @objc private func didTapAddButton(){
         delegate?.newsHeaderViewDidTapAddButton(self)
     }
     

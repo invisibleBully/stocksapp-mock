@@ -9,7 +9,7 @@ import UIKit
 import SafariServices
 
 
-enum `Type` {
+enum StoryType {
     
     case topStories
     case company(symbol: String)
@@ -33,7 +33,7 @@ enum `Type` {
 class NewsViewController: UIViewController {
     
     
-    var type: Type!
+    var type: StoryType!
     
     let tableView: UITableView =  {
         let table = UITableView()
@@ -48,7 +48,7 @@ class NewsViewController: UIViewController {
     
     
     
-    init(type: Type) {
+    init(type: StoryType) {
         self.type = type
         super.init(nibName: nil, bundle: nil)
     }

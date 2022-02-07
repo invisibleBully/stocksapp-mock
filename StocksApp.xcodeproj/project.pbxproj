@@ -23,6 +23,7 @@
 		8489A8FD270F3414005B8332 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8FC270F3414005B8332 /* Search.swift */; };
 		84BB6BD1273C0BC5002E71E3 /* NewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB6BD0273C0BC5002E71E3 /* NewsHeaderView.swift */; };
 		8956BC0D8C8C0F771DAF64A2 /* Pods_StocksApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C0D03B7FF1F22F72EA27B8 /* Pods_StocksApp.framework */; };
+		C313300127AC9E9A00ED7159 /* NewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313300027AC9E9A00ED7159 /* NewsStory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		8489A8FC270F3414005B8332 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		84BB6BD0273C0BC5002E71E3 /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
 		B596E042917A121BB46B237B /* Pods-StocksApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StocksApp.release.xcconfig"; path = "Target Support Files/Pods-StocksApp/Pods-StocksApp.release.xcconfig"; sourceTree = "<group>"; };
+		C313300027AC9E9A00ED7159 /* NewsStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStory.swift; sourceTree = "<group>"; };
 		D3C0D03B7FF1F22F72EA27B8 /* Pods_StocksApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StocksApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				8489A8FC270F3414005B8332 /* Search.swift */,
+				C313300027AC9E9A00ED7159 /* NewsStory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				8489A8FB270DE365005B8332 /* SearchResultTableViewCell.swift in Sources */,
 				8489A8F1270C67CC005B8332 /* StockDetailViewController.swift in Sources */,
 				8489A8D6270C6396005B8332 /* WatchListViewController.swift in Sources */,
+				C313300127AC9E9A00ED7159 /* NewsStory.swift in Sources */,
 				8489A8ED270C6796005B8332 /* NewsViewController.swift in Sources */,
 				8489A8F5270C7832005B8332 /* PersistenceManager.swift in Sources */,
 				8489A8F9270CB4CD005B8332 /* Extension.swift in Sources */,
