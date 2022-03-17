@@ -32,22 +32,28 @@ class NewsStoryTableViewCell: UITableViewCell {
     //source
     private let  sourceLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .systemFont(ofSize: 14, weight: .bold)
         return label
     }()
+    
+    
     //headline
     private let  headlineLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .systemFont(ofSize: 13, weight: .medium)
         return label
     }()
+    
+    
     //date
     private let  dateLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .systemFont(ofSize: 12, weight: .light)
         return label
     }()
+    
+    
     //image
     private let storyImageView: UIImageView = {
         let imageView = UIImageView()
@@ -78,9 +84,11 @@ class NewsStoryTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         let imageSize: CGFloat = contentView.height - 12
+      
         storyImageView.frame = CGRect(x: contentView.width - imageSize - 10,
-                                      y: 3.0,
+                                      y: (contentView.height - imageSize) / 2,
                                       width: imageSize,
                                       height: imageSize)
         

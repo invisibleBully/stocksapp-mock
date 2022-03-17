@@ -66,8 +66,8 @@ extension WatchListViewController: UISearchResultsUpdating {
         guard let query = searchController.searchBar.text,
               let resultsViewController = searchController.searchResultsController as? SearchResultsViewController,
               !query.trimmingCharacters(in: .whitespaces).isEmpty else {
-            return
-        }
+                  return
+              }
         //optimize to reduce number of searches when user is done typing...
         
         
