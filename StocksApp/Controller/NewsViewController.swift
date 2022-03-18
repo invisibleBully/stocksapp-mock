@@ -14,7 +14,6 @@ enum StoryType {
     case topStories
     case company(symbol: String)
     
-    
     var title: String {
         switch self {
         case .topStories:
@@ -105,7 +104,8 @@ class NewsViewController: UIViewController {
     
     
     private func open(url: URL){
-        
+        let safariController = SFSafariViewController(url: url)
+        present(safariController, animated: true, completion: nil)
     }
     
 }
@@ -141,7 +141,8 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: NewsHeaderView.identifier) as? NewsHeaderView else {return UIView()}
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: NewsHeaderView.identifier) as?
+                NewsHeaderView else {return UIView()}
         headerView.configure(withViewModel: .init(title: self.type.title,
                                                   shouldShowActionButton: false))
         return headerView
@@ -155,7 +156,25 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let story = stories[indexPath.row]
+        guard let url = URL(string: story.url) else {
+            presentFailedOpenAlert()
+            return
+        }
+        open(url: url)
     }
+    
+    
+    private func presentFailedOpenAlert(){
+        let alert = UIAlertController(title: "Invalid Web Address",
+                                      message: "We are unable to open this article. Please try again later.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .cancel,
+                                      handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
     
     
 }
