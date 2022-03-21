@@ -9,6 +9,7 @@ import Foundation
 
 
 struct NewsStory: Codable {
+    
     let category: String
     let datetime: TimeInterval
     let headline: String
@@ -17,6 +18,7 @@ struct NewsStory: Codable {
     let source: String
     let summary: String
     let url: String
+    
 }
 
 

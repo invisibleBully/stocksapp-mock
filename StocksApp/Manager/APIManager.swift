@@ -28,6 +28,7 @@ final class APIManager {
         case search
         case topNews = "news"
         case companyNews = "company-news"
+        case marketData = "stock/candle"
     }
     
     
@@ -51,9 +52,11 @@ final class APIManager {
         let queryString  = queryItems.map {"\($0.name)=\($0.value ?? "")"}.joined(separator: "&")
         urlString += "?" + queryString
         
+        print("URL String: \(urlString)")
         
         return URL(string: urlString)
     }
+    
     
     
     
@@ -89,6 +92,26 @@ final class APIManager {
     }
     
     
+    public func marketData(forSymbol symbol: String,
+                           numberOfDays: TimeInterval = 7,
+                           completion: @escaping (Result<MarketDataResponse, Error>) -> Void) {
+        
+        let today = Date().addingTimeInterval(-(60 * 60 * 24 * 2))
+        let prior = today.addingTimeInterval(-(60 * 60 * 24 * 2 * numberOfDays))
+        let url = url(forEndpoint: .marketData,
+                      queryParams: ["symbol":symbol,
+                                    "resolution":"1",
+                                    "from":"\(Int(prior.timeIntervalSince1970))",
+                                    "to":"\(Int(today.timeIntervalSince1970))"
+                                   ]
+        )
+        
+        request(url: url, type: MarketDataResponse.self, completion: completion)
+        
+        
+    }
+    
+    
     
     
     
@@ -105,10 +128,6 @@ final class APIManager {
     
     public func news(for type: StoryType, completion: @escaping (Result<[NewsStory],Error>) -> Void) {
         
-        //guard let url = url(forEndpoint: .topNews, queryParams: ["category":"general"]) else {
-        //return
-        //}
-        
         switch type {
             
         case .topStories:
@@ -116,11 +135,14 @@ final class APIManager {
         case .company(let symbol):
             let today = Date()
             let oneMonthBack = today.addingTimeInterval(-(60 * 60 * 24 * 2))
-            request(url: url(forEndpoint: .companyNews, queryParams: ["symbol" : symbol,
-                                                                      "from":DateFormatter.newsDateFormatter.string(from: oneMonthBack),
-                                                                      "to":DateFormatter.newsDateFormatter.string(from: today)
-                                                                     ]
-                            ), type: [NewsStory].self, completion: completion)
+            request(url: url(forEndpoint: .companyNews,
+                             queryParams: ["symbol" : symbol,
+                                           "from":DateFormatter.newsDateFormatter.string(from: oneMonthBack),
+                                           "to":DateFormatter.newsDateFormatter.string(from: today)
+                                          ]
+                            ),
+                    type: [NewsStory].self,
+                    completion: completion)
         }
         
         

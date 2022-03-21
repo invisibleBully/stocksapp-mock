@@ -12,15 +12,67 @@ class WatchListViewController: UIViewController {
     
     private var searchTimer: Timer?
     private var floatingPanel: FloatingPanelController?
+    private var watchlistMap: [String:[CandleStick]] = [:]
+    
+    
+    
+    private let tableView: UITableView =  {
+        let tableView = UITableView()
+        return tableView
+    }()
+    
+    private var viewModel: [String] = []
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupSearchController()
+        setupTableView()
+        fetchWatchListData()
         setupFloatingPanel()
         setupTitleView()
     }
+    
+    
+    
+    
+    
+    private func setupTableView(){
+        view.addSubViews(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    
+    
+    private func fetchWatchListData(){
+        
+        let symbols = PersistenceManager.shared.watchList
+        let group = DispatchGroup()
+        //fetch market data per symbol
+        for symbol in symbols {
+            group.enter()
+            APIManager.shared.marketData(forSymbol: symbol) { [weak self] response  in
+                defer { group.leave() }
+                switch response {
+                case .success(let data):
+                    let candleSticks = data.candleSticks
+                    self?.watchlistMap[symbol] = candleSticks
+                case .failure(let error):
+                    print("Error: \(error)")
+                }
+            }
+        }
+        group.notify(queue: .main) { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.tableView.reloadData()
+        }
+    }
+    
     
     
     private func setupSearchController(){
@@ -115,6 +167,29 @@ extension WatchListViewController: FloatingPanelControllerDelegate {
     
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
         navigationItem.titleView?.isHidden = fpc.state == .full
+    }
+    
+}
+
+
+
+extension WatchListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return watchlistMap.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        //open detail for selection
     }
     
     
