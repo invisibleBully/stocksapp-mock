@@ -63,14 +63,11 @@ final class PersistenceManager {
             "AAPL":"Apple Inc.",
             "MSFT":"Microsoft Corporation",
             "SNAP":"Snap Inc.",
-            "GOOG":"Alphabet",
-            "AMZN":"Amazon.com, Inc.",
-            "WORK":"Slack Technologies",
+            "AMZN":"Amazon Inc.",
             "FB":"Meta",
-            "NVDA":"Nvidia Inc.",
-            "NKE":"Nike",
-            "PIN":"Pinterest Inc.",
+            "PINS":"Pinterest"
         ]
+        
         let symbols = map.keys.map{ $0 }
         defaults.set(symbols, forKey: Constant.watchlistKey)
         

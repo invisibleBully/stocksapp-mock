@@ -21,8 +21,8 @@ class WatchListViewController: UIViewController {
         return tableView
     }()
     
-    private var viewModel: [String] = []
-    
+    private var viewModels: [WatchListTableViewCell.ViewModel] = []
+    let defaults  = UserDefaults.standard
     
     
     override func viewDidLoad() {
@@ -69,8 +69,53 @@ class WatchListViewController: UIViewController {
             guard let self = self else {
                 return
             }
+            self.creatViewModels()
             self.tableView.reloadData()
         }
+    }
+    
+    
+    private func creatViewModels(){
+        var viewModels = [WatchListTableViewCell.ViewModel]()
+        
+        for (symbol, candleSticks) in watchlistMap {
+            let changePercentage = getChangePercentage(forCandleStickData: candleSticks)
+            viewModels.append(.init(symbol: symbol,
+                                    companyName: defaults.string(forKey: symbol) ?? "Company",
+                                    price: getLatestClosingPrice(symbol: symbol,fromData: candleSticks),
+                                    changeColor: changePercentage < 0 ? .systemRed : .systemGreen,
+                                    changePercentage: .percentage(fromDouble: changePercentage))
+                              
+                              
+            )
+            
+        }
+        
+        print("\n\n\n \(viewModels)")
+        self.viewModels = viewModels
+    }
+    
+    
+    
+    private func getLatestClosingPrice(symbol: String, fromData data: [CandleStick]) -> String {
+        guard let closingPrice = data.first?.close else {
+            return ""
+        }
+        return .formatted(number: closingPrice)
+    }
+    
+    
+    
+    private func getChangePercentage(forCandleStickData data: [CandleStick]) -> Double {
+        let latestDate = data[0].date
+        guard let latestClose = data.first?.close,let priorClose =
+                data.first(where: { !Calendar.current.isDate($0.date, inSameDayAs: latestDate)} )?.close else {
+                    return 0
+                }
+        
+        let difference  = 1 - (priorClose/latestClose)
+        
+        return difference
     }
     
     

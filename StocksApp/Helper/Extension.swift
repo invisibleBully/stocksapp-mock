@@ -9,6 +9,29 @@ import Foundation
 import UIKit
 import FloatingPanel
 
+//MARK: - Number Formatter
+
+extension NumberFormatter {
+    
+    static let percentFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = .current
+        formatter.numberStyle = .percent
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
+    
+    
+    static let numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = .current
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
+    
+    
+}
 
 
 //MARK: - UIImageView
@@ -30,7 +53,7 @@ extension UIImageView {
             }
             task.resume()
         }
-
+        
     }
     
 }
@@ -44,6 +67,18 @@ extension String {
     static func string(from timeInterval: TimeInterval) -> String {
         let date = Date(timeIntervalSince1970: timeInterval)
         return DateFormatter.prettyDateFormatter.string(from: date)
+    }
+    
+    
+    static func percentage(fromDouble double: Double) -> String{
+        let formatter = NumberFormatter.percentFormatter
+        return formatter.string(from: NSNumber(value: double)) ?? "\(double)"
+    }
+    
+    
+    static func formatted(number: Double) -> String{
+        let formatter = NumberFormatter.numberFormatter
+        return formatter.string(from: NSNumber(value: number)) ?? "\(number)"
     }
     
 }
