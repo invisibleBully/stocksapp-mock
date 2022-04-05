@@ -52,7 +52,6 @@ final class APIManager {
         let queryString  = queryItems.map {"\($0.name)=\($0.value ?? "")"}.joined(separator: "&")
         urlString += "?" + queryString
         
-        print("URL String: \(urlString)")
         
         return URL(string: urlString)
     }
