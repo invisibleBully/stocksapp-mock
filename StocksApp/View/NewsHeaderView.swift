@@ -35,14 +35,14 @@ class NewsHeaderView: UITableViewHeaderFooterView {
     }()
     
     
-    private let button: UIButton = {
+    let button: UIButton = {
         let button = UIButton()
-        button.setTitle("+ Watchlist", for: .normal)
+        button.layer.masksToBounds = true
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.backgroundColor = .systemBlue
+        button.setTitle("+ Watchlist", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 6.0
-        button.layer.masksToBounds = true
         return button
     }()
     
@@ -77,7 +77,6 @@ class NewsHeaderView: UITableViewHeaderFooterView {
     override func prepareForReuse() {
         super.prepareForReuse()
         label.text = ""
-        
     }
     
     

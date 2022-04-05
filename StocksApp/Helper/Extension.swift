@@ -9,6 +9,20 @@ import Foundation
 import UIKit
 import FloatingPanel
 
+
+
+
+
+//MARK: - Notification
+extension Notification.Name {
+
+    static let didAddtoWatchList = Notification.Name("didAddtoWatchList")
+    
+    
+}
+
+
+
 //MARK: - Number Formatter
 
 extension NumberFormatter {

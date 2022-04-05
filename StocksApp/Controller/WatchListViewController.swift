@@ -11,10 +11,15 @@ import FloatingPanel
 class WatchListViewController: UIViewController {
     
     
+    let defaults  = UserDefaults.standard
+    
+    
     private var searchTimer: Timer?
     private var floatingPanel: FloatingPanelController?
     private var watchlistMap: [String:[CandleStick]] = [:]
     static var maxChangeWidth: CGFloat = 0
+    private var viewModels: [WatchListTableViewCell.ViewModel] = []
+    private var observer: NSObjectProtocol?
     
     
     private let tableView: UITableView =  {
@@ -25,8 +30,7 @@ class WatchListViewController: UIViewController {
         return tableView
     }()
     
-    private var viewModels: [WatchListTableViewCell.ViewModel] = []
-    let defaults  = UserDefaults.standard
+    
     
     
     override func viewDidLoad() {
@@ -37,6 +41,19 @@ class WatchListViewController: UIViewController {
         fetchWatchListData()
         setupFloatingPanel()
         setupTitleView()
+        setupObserver()
+    }
+    
+    
+    private func setupObserver(){
+        observer = NotificationCenter.default.addObserver(forName: .didAddtoWatchList,
+                                                          object: nil,
+                                                          queue: .main,
+                                                          using: { [weak self] _ in
+            guard let self = self else { return }
+            self.viewModels.removeAll()
+            self.fetchWatchListData()
+        })
     }
     
     
@@ -62,7 +79,7 @@ class WatchListViewController: UIViewController {
         let symbols = PersistenceManager.shared.watchList
         let group = DispatchGroup()
         //fetch market data per symbol
-        for symbol in symbols {
+        for symbol in symbols where  watchlistMap[symbol] == nil {
             group.enter()
             APIManager.shared.marketData(forSymbol: symbol) { [weak self] response  in
                 defer { group.leave() }
@@ -104,7 +121,6 @@ class WatchListViewController: UIViewController {
             
         }
         
-        print("\n\n\n \(viewModels)")
         self.viewModels = viewModels
     }
     
@@ -173,15 +189,13 @@ class WatchListViewController: UIViewController {
 extension WatchListViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
+        
         guard let query = searchController.searchBar.text,
               let resultsViewController = searchController.searchResultsController as? SearchResultsViewController,
               !query.trimmingCharacters(in: .whitespaces).isEmpty else {
                   return
               }
         //optimize to reduce number of searches when user is done typing...
-        
-        
-        
         //call API to search
         APIManager.shared.search(query: query) { result  in
             switch result {
@@ -207,13 +221,11 @@ extension WatchListViewController: UISearchResultsUpdating {
 extension WatchListViewController: SearchResultViewControllerDelegate {
     
     func searchResultsViewControllerDidSelect(searchResult: SearchResult) {
-        
         navigationItem.searchController?.searchBar.resignFirstResponder()
-        let stockDetailController = StockDetailViewController()
+        let stockDetailController = StockDetailViewController(symbol: searchResult.displaySymbol, companyName: searchResult.description)
         let navigationController = UINavigationController(rootViewController: stockDetailController)
         stockDetailController.title = searchResult.description
         present(navigationController, animated: true, completion: nil)
-        
     }
     
     
@@ -286,6 +298,10 @@ extension WatchListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         //open detail for selection
+        let viewModel = viewModels[indexPath.row]
+        let viewController = StockDetailViewController(symbol: viewModel.symbol, companyName: viewModel.companyName, candleStickData: watchlistMap[viewModel.symbol] ?? [])
+        let navigationController = UINavigationController(rootViewController: viewController)
+        present(navigationController, animated: true, completion: nil)
     }
     
     

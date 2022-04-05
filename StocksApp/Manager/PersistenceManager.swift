@@ -27,6 +27,7 @@ final class PersistenceManager {
     
     
     public var watchList: [String] {
+        
         if !hasOnboarded {
             defaults.set(true, forKey: Constant.onboardedKey)
             setupDefaults()
@@ -38,11 +39,19 @@ final class PersistenceManager {
     
     
     
-    
-    public func addToWatchList(){
-        
+    public func addToWatchList(symbol: String, companyName: String){
+        var current = watchList
+        current.append(symbol)
+        defaults.set(current, forKey: Constant.watchlistKey)
+        defaults.set(companyName, forKey: symbol)
+        NotificationCenter.default.post(name: .didAddtoWatchList, object: nil)
     }
     
+    
+    
+    public func watchListContains(symbol: String) -> Bool {
+        return watchList.contains(symbol)
+    }
     
     
     
