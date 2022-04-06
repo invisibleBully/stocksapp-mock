@@ -8,4 +8,5 @@ target 'StocksApp' do
   # Pods for StocksApp
   pod 'FloatingPanel'
   pod 'Kingfisher'
+  pod 'Charts'  
 end

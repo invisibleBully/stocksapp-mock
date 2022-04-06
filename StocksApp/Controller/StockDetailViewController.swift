@@ -13,8 +13,9 @@ class StockDetailViewController: UIViewController {
     //symbol, company name, any chart data we may have
     private let symbol: String
     private let companyName: String
-    private let candleStick: [CandleStick]
+    private var candleStick: [CandleStick]
     private var stories: [NewsStory] = []
+    private var metrics: Metric?
     
     
     private let tableView: UITableView = {
@@ -70,14 +71,72 @@ class StockDetailViewController: UIViewController {
     
     
     private func fetchFinancialData(){
+        
+        let group = DispatchGroup()
         //fetch candle sticks if needed
+        if candleStick.isEmpty {
+            group.enter()
+            APIManager.shared.marketData(forSymbol: symbol) { [weak self] result in
+                defer {
+                    group.leave()
+                }
+                switch result {
+                case .success(let result):
+                    self?.candleStick = result.candleSticks
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                }
+                
+            }
+        }
         //fetch financial metrics
-        renderChart()
+        group.enter()
+        APIManager.shared.financialMetrics(forSymbol: symbol) { [weak self] result  in
+            defer {
+                group.leave()
+            }
+            switch result {
+            case .success(let result):
+                let metrics = result.metric
+                self?.metrics = metrics
+            case .failure(let error):
+                print("Error on metrics API... \(error.localizedDescription)")
+            }
+            
+        }
+        
+        
+        group.notify(queue: .main) { [weak self]  in
+            self?.renderChart()
+        }
+        
+        
     }
     
     
     private func renderChart(){
+        //chartViewModel
+        //collection of financial view models
+        let headerView = StockDetailHeaderView(frame: CGRect(x: 0,
+                                                             y: 0,
+                                                             width: view.width,
+                                                             height: (view.width * 0.7) + 100)
+        )
         
+        
+        var viewModels: [MetricCollectionViewCell.ViewModel] = []
+        if let metrics = metrics {
+            viewModels.append(.init(name: "52W High", value: "\(metrics.annualWeekHigh)"))
+            viewModels.append(.init(name: "52W Low", value: "\(metrics.annualWeekLow)"))
+            viewModels.append(.init(name: "52W Daily", value: "\(metrics.annualWeekPriceReturnDaily)"))
+            viewModels.append(.init(name: "Beta", value: "\(metrics.beta)"))
+            viewModels.append(.init(name: "10D Vol.", value: "\(metrics.tenDayAverageTradingVolume)"))
+        }
+        //configure
+        //headerView.backgroundColor = .link
+        headerView.configure(chartViewModel: .init(data: candleStick.reversed().map { $0.close },
+                                                   showLegend: true, showAxis: true), metricViewModels: viewModels)
+        tableView.tableHeaderView = headerView
     }
     
     

@@ -29,6 +29,7 @@ final class APIManager {
         case topNews = "news"
         case companyNews = "company-news"
         case marketData = "stock/candle"
+        case financialMetrics = "stock/metric"
     }
     
     
@@ -68,7 +69,11 @@ final class APIManager {
             return
         }
         
+        
         let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
+            
+
+            
             
             guard let data = data, error == nil else {
                 if let error = error {
@@ -145,6 +150,20 @@ final class APIManager {
         }
         
         
+    }
+    
+    
+    
+    public func financialMetrics(forSymbol symbol: String,
+                                 completion: @escaping (Result<FinancialMetricResponse,Error>) -> Void) {
+        
+        let url = url(forEndpoint: .financialMetrics, queryParams: [
+                                                                    "symbol":"AAPL",
+                                                                    "metric":"all"
+                                                                   ]
+        )
+        
+        request(url: url, type: FinancialMetricResponse.self, completion: completion)
     }
     
     
