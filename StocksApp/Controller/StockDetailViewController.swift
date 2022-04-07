@@ -134,9 +134,26 @@ class StockDetailViewController: UIViewController {
         }
         //configure
         //headerView.backgroundColor = .link
+        
+        let change = getChangePercentage(forCandleStickData: candleStick)
         headerView.configure(chartViewModel: .init(data: candleStick.reversed().map { $0.close },
-                                                   showLegend: true, showAxis: true), metricViewModels: viewModels)
+                                                   showLegend: true, showAxis: true, fillColor: change < 1 ? .systemRed : .systemGreen), metricViewModels: viewModels)
         tableView.tableHeaderView = headerView
+    }
+    
+    
+    
+    
+    private func getChangePercentage(forCandleStickData data: [CandleStick]) -> Double {
+        let latestDate = data[0].date
+        guard let latestClose = data.first?.close,let priorClose =
+                data.first(where: { !Calendar.current.isDate($0.date, inSameDayAs: latestDate)} )?.close else {
+                    return 0
+                }
+        
+        let difference  = 1 - (priorClose/latestClose)
+        
+        return difference
     }
     
     
