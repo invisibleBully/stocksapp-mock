@@ -137,7 +137,8 @@ class StockDetailViewController: UIViewController {
         
         let change = getChangePercentage(forCandleStickData: candleStick)
         headerView.configure(chartViewModel: .init(data: candleStick.reversed().map { $0.close },
-                                                   showLegend: true, showAxis: true, fillColor: change < 1 ? .systemRed : .systemGreen), metricViewModels: viewModels)
+                                                   showLegend: true, showAxis: true, fillColor: change < 1 ? .systemRed : .systemGreen),
+                             metricViewModels: viewModels)
         tableView.tableHeaderView = headerView
     }
     
@@ -238,6 +239,8 @@ extension StockDetailViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let url = URL(string: stories[indexPath.row].url) else { return }
+        HapticsManager.shared.vibrateForSelection()
+
         let safariController = SFSafariViewController(url: url)
         present(safariController, animated: true, completion: nil)
     }
@@ -252,6 +255,8 @@ extension StockDetailViewController: NewsHeaderViewDelegate {
     
     func newsHeaderViewDidTapAddButton(_ headerView: NewsHeaderView) {
         headerView.button.isHidden = true
+        
+        HapticsManager.shared.vibrate(for: .success)
         PersistenceManager.shared.addToWatchList(symbol: symbol, companyName: companyName)
         
         let alert = UIAlertController(title: "Watchlist",

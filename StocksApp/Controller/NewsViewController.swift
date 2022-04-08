@@ -9,6 +9,7 @@ import UIKit
 import SafariServices
 
 
+/// Types of stories
 enum StoryType {
     
     case topStories
@@ -29,7 +30,7 @@ enum StoryType {
 
 
 
-class NewsViewController: UIViewController {
+final class NewsViewController: UIViewController {
     
     
     var type: StoryType!
@@ -156,6 +157,8 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        HapticsManager.shared.vibrateForSelection()
+        
         let story = stories[indexPath.row]
         guard let url = URL(string: story.url) else {
             presentFailedOpenAlert()
@@ -166,6 +169,8 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     private func presentFailedOpenAlert(){
+        HapticsManager.shared.vibrate(for: .error)
+        
         let alert = UIAlertController(title: "Invalid Web Address",
                                       message: "We are unable to open this article. Please try again later.",
                                       preferredStyle: .alert)

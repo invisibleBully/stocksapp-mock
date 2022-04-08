@@ -8,18 +8,27 @@
 import UIKit
 import FloatingPanel
 
-class WatchListViewController: UIViewController {
+
+/// View controller to render user watch list
+final class WatchListViewController: UIViewController {
     
     
-    let defaults  = UserDefaults.standard
-    
-    
+    /// timer to optimize searching
     private var searchTimer: Timer?
+    
+    /// floating panel
     private var floatingPanel: FloatingPanelController?
+    
     private var watchlistMap: [String:[CandleStick]] = [:]
+    
+    /// width to track change label geometry
     static var maxChangeWidth: CGFloat = 0
+    
     private var viewModels: [WatchListTableViewCell.ViewModel] = []
     private var observer: NSObjectProtocol?
+    
+    let defaults  = UserDefaults.standard
+
     
     
     private let tableView: UITableView =  {
@@ -45,6 +54,7 @@ class WatchListViewController: UIViewController {
     }
     
     
+    /// sets up observer for watch list updates
     private func setupObserver(){
         observer = NotificationCenter.default.addObserver(forName: .didAddtoWatchList,
                                                           object: nil,
@@ -74,6 +84,7 @@ class WatchListViewController: UIViewController {
     
     
     
+    /// fetch watch list models
     private func fetchWatchListData(){
         
         let symbols = PersistenceManager.shared.watchList
@@ -102,6 +113,7 @@ class WatchListViewController: UIViewController {
     }
     
     
+    /// create view models from models
     private func creatViewModels(){
         var viewModels = [WatchListTableViewCell.ViewModel]()
         
@@ -126,6 +138,11 @@ class WatchListViewController: UIViewController {
     
     
     
+    /// get latest closing price
+    /// - Parameters:
+    ///   - symbol: company symbol
+    ///   - data: collection of data
+    /// - Returns: string
     private func getLatestClosingPrice(symbol: String, fromData data: [CandleStick]) -> String {
         guard let closingPrice = data.first?.close else {
             return ""
@@ -135,6 +152,9 @@ class WatchListViewController: UIViewController {
     
     
     
+    /// get change percentage for symbol data
+    /// - Parameter data: collection of data
+    /// - Returns: double percentage
     private func getChangePercentage(forCandleStickData data: [CandleStick]) -> Double {
         let latestDate = data[0].date
         guard let latestClose = data.first?.close,let priorClose =
@@ -149,6 +169,7 @@ class WatchListViewController: UIViewController {
     
     
     
+    /// search up search and results controller
     private func setupSearchController(){
         let resultsViewController = SearchResultsViewController()
         resultsViewController.delegate = self
@@ -188,6 +209,8 @@ class WatchListViewController: UIViewController {
 
 extension WatchListViewController: UISearchResultsUpdating {
     
+    /// update search results on key tap
+    /// - Parameter searchController: reference of the search controller
     func updateSearchResults(for searchController: UISearchController) {
         
         guard let query = searchController.searchBar.text,
@@ -218,10 +241,14 @@ extension WatchListViewController: UISearchResultsUpdating {
 
 
 
+// MARK: - Search Result View Controller Delegate
+
 extension WatchListViewController: SearchResultViewControllerDelegate {
     
     func searchResultsViewControllerDidSelect(searchResult: SearchResult) {
         navigationItem.searchController?.searchBar.resignFirstResponder()
+        HapticsManager.shared.vibrateForSelection()
+        
         let stockDetailController = StockDetailViewController(symbol: searchResult.displaySymbol, companyName: searchResult.description)
         let navigationController = UINavigationController(rootViewController: stockDetailController)
         stockDetailController.title = searchResult.description
@@ -233,8 +260,12 @@ extension WatchListViewController: SearchResultViewControllerDelegate {
 
 
 
+// MARK: - FloatingPanelControllerDelegate
+
 extension WatchListViewController: FloatingPanelControllerDelegate {
     
+    /// gets floating panel state change
+    /// - Parameter fpc: reference of floating panel controller
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
         navigationItem.titleView?.isHidden = fpc.state == .full
     }
@@ -242,6 +273,8 @@ extension WatchListViewController: FloatingPanelControllerDelegate {
 }
 
 
+
+// MARK: - TabelViewController Delegate & Datasource
 
 extension WatchListViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -298,6 +331,7 @@ extension WatchListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         //open detail for selection
+        HapticsManager.shared.vibrateForSelection()
         let viewModel = viewModels[indexPath.row]
         let viewController = StockDetailViewController(symbol: viewModel.symbol, companyName: viewModel.companyName, candleStickData: watchlistMap[viewModel.symbol] ?? [])
         let navigationController = UINavigationController(rootViewController: viewController)
@@ -308,6 +342,8 @@ extension WatchListViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
+
+// MARK: - WatchListTableViewCellDelegate
 
 extension WatchListViewController: WatchListTableViewCellDelegate {
     

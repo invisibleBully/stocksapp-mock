@@ -39,6 +39,10 @@ final class PersistenceManager {
     
     
     
+    /// add symbol to watch list
+    /// - Parameters:
+    ///   - symbol: company symbol
+    ///   - companyName: company name
     public func addToWatchList(symbol: String, companyName: String){
         var current = watchList
         current.append(symbol)
@@ -49,12 +53,17 @@ final class PersistenceManager {
     
     
     
+    /// check if watchlist contains symbol to be added
+    /// - Parameter symbol: company symbol
+    /// - Returns: boolean
     public func watchListContains(symbol: String) -> Bool {
         return watchList.contains(symbol)
     }
     
     
     
+    /// remove company symbol from watchlist
+    /// - Parameter symbol: company symbol
     public func removeFromWatchList(symbol: String){
         var newWatchList = [String]()
         defaults.set(nil, forKey: symbol)
@@ -66,11 +75,14 @@ final class PersistenceManager {
     
     
     
+    /// check if user has onboarded
     private var hasOnboarded: Bool {
         return defaults.bool(forKey: Constant.onboardedKey)
     }
     
     
+    
+    /// set up default watch list items
     private func setupDefaults(){
         
         let map: [String:String] = [

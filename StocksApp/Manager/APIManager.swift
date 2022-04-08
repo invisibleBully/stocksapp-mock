@@ -8,15 +8,18 @@
 import Foundation
 
 
-
+/// Object to manage API calls
 final class APIManager {
     
     
-    static let shared = APIManager()
+    /// Singleton
+    public static let shared = APIManager()
+    
+    /// private constructor
     private init() {}
     
     
-    
+    /// Constants
     private struct Constant {
         static let API_KEY = "c5eso1iad3ib660qogng"
         static let SANDBOX_API_KEY = "sandbox_c5eso1iad3ib660qogo0"
@@ -24,6 +27,7 @@ final class APIManager {
     }
     
     
+    /// APIs endpoints
     private enum Endpoint: String {
         case search
         case topNews = "news"
@@ -72,7 +76,7 @@ final class APIManager {
         
         let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
             
-
+            
             
             
             guard let data = data, error == nil else {
@@ -96,6 +100,11 @@ final class APIManager {
     }
     
     
+    /// get market data for company
+    /// - Parameters:
+    ///   - symbol: given company stock symbol
+    ///   - numberOfDays: number of days back from today
+    ///   - completion: callback for result
     public func marketData(forSymbol symbol: String,
                            numberOfDays: TimeInterval = 7,
                            completion: @escaping (Result<MarketDataResponse, Error>) -> Void) {
@@ -119,6 +128,10 @@ final class APIManager {
     
     
     
+    /// search for company
+    /// - Parameters:
+    ///   - query: query string (symbol or name)
+    ///   - completion: callback for result
     public func search(query: String, completion: @escaping (Result<SearchResponse,Error>) -> Void){
         
         guard let url = url(forEndpoint: .search, queryParams: ["q":query]) else {
@@ -130,6 +143,10 @@ final class APIManager {
     
     
     
+    /// get news for type
+    /// - Parameters:
+    ///   - type: type of news (top stories, company news)
+    ///   - completion: callback for result
     public func news(for type: StoryType, completion: @escaping (Result<[NewsStory],Error>) -> Void) {
         
         switch type {
@@ -154,13 +171,17 @@ final class APIManager {
     
     
     
+    /// get metrics data for company
+    /// - Parameters:
+    ///   - symbol: company symbol
+    ///   - completion: callback for result
     public func financialMetrics(forSymbol symbol: String,
                                  completion: @escaping (Result<FinancialMetricResponse,Error>) -> Void) {
         
         let url = url(forEndpoint: .financialMetrics, queryParams: [
-                                                                    "symbol":"AAPL",
-                                                                    "metric":"all"
-                                                                   ]
+            "symbol":"AAPL",
+            "metric":"all"
+        ]
         )
         
         request(url: url, type: FinancialMetricResponse.self, completion: completion)
