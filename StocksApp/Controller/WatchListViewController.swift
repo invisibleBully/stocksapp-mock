@@ -28,7 +28,7 @@ final class WatchListViewController: UIViewController {
     private var observer: NSObjectProtocol?
     
     let defaults  = UserDefaults.standard
-
+    
     
     
     private let tableView: UITableView =  {
@@ -83,11 +83,36 @@ final class WatchListViewController: UIViewController {
     }
     
     
+    private func createPlaceHolderViewModels(){
+        
+        let symbols = PersistenceManager.shared.watchList
+        symbols.forEach { item in
+            viewModels.append(.init(symbol: item,
+                                    companyName: UserDefaults.standard.string(forKey: item) ?? "Company",
+                                    price: "0.00",
+                                    changeColor: .systemGreen,
+                                    changePercentage: "0.00",
+                                    chartViewModel: .init(data: [],
+                                                          showLegend: false,
+                                                          showAxis: false,
+                                                          fillColor: .clear))
+            )
+        }
+        
+        viewModels = viewModels.sorted(by: { $0.symbol < $1.symbol} )
+        tableView.reloadData()
+    }
+    
+    
     
     /// fetch watch list models
     private func fetchWatchListData(){
         
         let symbols = PersistenceManager.shared.watchList
+        
+        createPlaceHolderViewModels() //dummy data to populate
+        
+        
         let group = DispatchGroup()
         //fetch market data per symbol
         for symbol in symbols where  watchlistMap[symbol] == nil {
@@ -118,7 +143,7 @@ final class WatchListViewController: UIViewController {
         var viewModels = [WatchListTableViewCell.ViewModel]()
         
         for (symbol, candleSticks) in watchlistMap {
-            let changePercentage = getChangePercentage(forCandleStickData: candleSticks)
+            let changePercentage = candleSticks.getPercentage()
             viewModels.append(.init(symbol: symbol,
                                     companyName: defaults.string(forKey: symbol) ?? "Company",
                                     price: getLatestClosingPrice(symbol: symbol,fromData: candleSticks),
@@ -133,7 +158,7 @@ final class WatchListViewController: UIViewController {
             
         }
         
-        self.viewModels = viewModels
+        self.viewModels = viewModels.sorted(by: { $0.symbol < $1.symbol })
     }
     
     
@@ -152,21 +177,21 @@ final class WatchListViewController: UIViewController {
     
     
     
-    /// get change percentage for symbol data
-    /// - Parameter data: collection of data
-    /// - Returns: double percentage
-    private func getChangePercentage(forCandleStickData data: [CandleStick]) -> Double {
-        let latestDate = data[0].date
-        guard let latestClose = data.first?.close,let priorClose =
-                data.first(where: { !Calendar.current.isDate($0.date, inSameDayAs: latestDate)} )?.close else {
-                    return 0
-                }
-        
-        let difference  = 1 - (priorClose/latestClose)
-        
-        return difference
-    }
-    
+    //    /// get change percentage for symbol data
+    //    /// - Parameter data: collection of data
+    //    /// - Returns: double percentage
+    //    private func getChangePercentage(forCandleStickData data: [CandleStick]) -> Double {
+    //        let latestDate = data[0].date
+    //        guard let latestClose = data.first?.close,let priorClose =
+    //                data.first(where: { !Calendar.current.isDate($0.date, inSameDayAs: latestDate)} )?.close else {
+    //                    return 0
+    //                }
+    //
+    //        let difference  = 1 - (priorClose/latestClose)
+    //
+    //        return difference
+    //    }
+    //
     
     
     /// search up search and results controller

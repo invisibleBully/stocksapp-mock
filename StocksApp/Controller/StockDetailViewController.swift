@@ -135,7 +135,7 @@ class StockDetailViewController: UIViewController {
         //configure
         //headerView.backgroundColor = .link
         
-        let change = getChangePercentage(forCandleStickData: candleStick)
+        let change = candleStick.getPercentage()
         headerView.configure(chartViewModel: .init(data: candleStick.reversed().map { $0.close },
                                                    showLegend: true, showAxis: true, fillColor: change < 1 ? .systemRed : .systemGreen),
                              metricViewModels: viewModels)
@@ -145,18 +145,18 @@ class StockDetailViewController: UIViewController {
     
     
     
-    private func getChangePercentage(forCandleStickData data: [CandleStick]) -> Double {
-        let latestDate = data[0].date
-        guard let latestClose = data.first?.close,let priorClose =
-                data.first(where: { !Calendar.current.isDate($0.date, inSameDayAs: latestDate)} )?.close else {
-                    return 0
-                }
-        
-        let difference  = 1 - (priorClose/latestClose)
-        
-        return difference
-    }
-    
+    //    private func getChangePercentage(forCandleStickData data: [CandleStick]) -> Double {
+    //        let latestDate = data[0].date
+    //        guard let latestClose = data.first?.close,let priorClose =
+    //                data.first(where: { !Calendar.current.isDate($0.date, inSameDayAs: latestDate)} )?.close else {
+    //                    return 0
+    //                }
+    //
+    //        let difference  = 1 - (priorClose/latestClose)
+    //
+    //        return difference
+    //    }
+    //
     
     private func setupCloseButton(){
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close,
@@ -240,7 +240,7 @@ extension StockDetailViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.deselectRow(at: indexPath, animated: true)
         guard let url = URL(string: stories[indexPath.row].url) else { return }
         HapticsManager.shared.vibrateForSelection()
-
+        
         let safariController = SFSafariViewController(url: url)
         present(safariController, animated: true, completion: nil)
     }
