@@ -10,3 +10,18 @@ target 'StocksApp' do
   pod 'Kingfisher'
   pod 'Charts'  
 end
+
+
+
+target 'StocksAppTests' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for StocksApp
+  pod 'FloatingPanel'
+  pod 'Kingfisher'
+  pod 'Charts'
+end
+
+
+

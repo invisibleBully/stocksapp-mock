@@ -23,17 +23,31 @@
 		8489A8FD270F3414005B8332 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8489A8FC270F3414005B8332 /* Search.swift */; };
 		84BB6BD1273C0BC5002E71E3 /* NewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB6BD0273C0BC5002E71E3 /* NewsHeaderView.swift */; };
 		8956BC0D8C8C0F771DAF64A2 /* Pods_StocksApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C0D03B7FF1F22F72EA27B8 /* Pods_StocksApp.framework */; };
+		9D39AE05970BB521241746CA /* Pods_StocksAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97F641D65E040E8E6EBB24C1 /* Pods_StocksAppTests.framework */; };
 		C3058F9127E3514700412CE2 /* NewsStoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3058F9027E3514700412CE2 /* NewsStoryTableViewCell.swift */; };
 		C3058F9327E51BEF00412CE2 /* MarketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3058F9227E51BEE00412CE2 /* MarketData.swift */; };
 		C313300127AC9E9A00ED7159 /* NewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313300027AC9E9A00ED7159 /* NewsStory.swift */; };
 		C3498BFC27FCD198004F51B6 /* FinancialMetricResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3498BFB27FCD198004F51B6 /* FinancialMetricResponse.swift */; };
 		C3498BFE27FCDD12004F51B6 /* StockDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3498BFD27FCDD12004F51B6 /* StockDetailHeaderView.swift */; };
 		C3498C0027FDE6AC004F51B6 /* MetricCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3498BFF27FDE6AC004F51B6 /* MetricCollectionViewCell.swift */; };
+		C3498C082800B79D004F51B6 /* StocksAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3498C072800B79D004F51B6 /* StocksAppTests.swift */; };
 		C3DAD65027E9E027001C8447 /* WatchListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DAD64F27E9E027001C8447 /* WatchListTableViewCell.swift */; };
 		C3DAD65227E9EA87001C8447 /* StockChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DAD65127E9EA87001C8447 /* StockChartView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C3498C092800B79D004F51B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8489A8C6270C6396005B8332 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8489A8CD270C6396005B8332;
+			remoteInfo = StocksApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		33FC30372E857F509766F294 /* Pods-StocksAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StocksAppTests.release.xcconfig"; path = "Target Support Files/Pods-StocksAppTests/Pods-StocksAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		3432CCFF1F57363604A7E9B2 /* Pods-StocksAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StocksAppTests.debug.xcconfig"; path = "Target Support Files/Pods-StocksAppTests/Pods-StocksAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		59B8B6626E269EA2DFCC2642 /* Pods-StocksApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StocksApp.debug.xcconfig"; path = "Target Support Files/Pods-StocksApp/Pods-StocksApp.debug.xcconfig"; sourceTree = "<group>"; };
 		8489A8CE270C6396005B8332 /* StocksApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StocksApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8489A8D1270C6396005B8332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +66,7 @@
 		8489A8FA270DE365005B8332 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		8489A8FC270F3414005B8332 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		84BB6BD0273C0BC5002E71E3 /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
+		97F641D65E040E8E6EBB24C1 /* Pods_StocksAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StocksAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B596E042917A121BB46B237B /* Pods-StocksApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StocksApp.release.xcconfig"; path = "Target Support Files/Pods-StocksApp/Pods-StocksApp.release.xcconfig"; sourceTree = "<group>"; };
 		C3058F9027E3514700412CE2 /* NewsStoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStoryTableViewCell.swift; sourceTree = "<group>"; };
 		C3058F9227E51BEE00412CE2 /* MarketData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketData.swift; sourceTree = "<group>"; };
@@ -59,6 +74,8 @@
 		C3498BFB27FCD198004F51B6 /* FinancialMetricResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialMetricResponse.swift; sourceTree = "<group>"; };
 		C3498BFD27FCDD12004F51B6 /* StockDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailHeaderView.swift; sourceTree = "<group>"; };
 		C3498BFF27FDE6AC004F51B6 /* MetricCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCollectionViewCell.swift; sourceTree = "<group>"; };
+		C3498C052800B79D004F51B6 /* StocksAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StocksAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3498C072800B79D004F51B6 /* StocksAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksAppTests.swift; sourceTree = "<group>"; };
 		C3DAD64F27E9E027001C8447 /* WatchListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListTableViewCell.swift; sourceTree = "<group>"; };
 		C3DAD65127E9EA87001C8447 /* StockChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartView.swift; sourceTree = "<group>"; };
 		D3C0D03B7FF1F22F72EA27B8 /* Pods_StocksApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StocksApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +90,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3498C022800B79D004F51B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D39AE05970BB521241746CA /* Pods_StocksAppTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				8489A8D0270C6396005B8332 /* StocksApp */,
+				C3498C062800B79D004F51B6 /* StocksAppTests */,
 				8489A8CF270C6396005B8332 /* Products */,
 				C057DA9080044B9E8D667AFE /* Pods */,
 				E066E143B523BDDC06D6DC5A /* Frameworks */,
@@ -90,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				8489A8CE270C6396005B8332 /* StocksApp.app */,
+				C3498C052800B79D004F51B6 /* StocksAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,14 +213,25 @@
 			children = (
 				59B8B6626E269EA2DFCC2642 /* Pods-StocksApp.debug.xcconfig */,
 				B596E042917A121BB46B237B /* Pods-StocksApp.release.xcconfig */,
+				3432CCFF1F57363604A7E9B2 /* Pods-StocksAppTests.debug.xcconfig */,
+				33FC30372E857F509766F294 /* Pods-StocksAppTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C3498C062800B79D004F51B6 /* StocksAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				C3498C072800B79D004F51B6 /* StocksAppTests.swift */,
+			);
+			path = StocksAppTests;
 			sourceTree = "<group>";
 		};
 		E066E143B523BDDC06D6DC5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				D3C0D03B7FF1F22F72EA27B8 /* Pods_StocksApp.framework */,
+				97F641D65E040E8E6EBB24C1 /* Pods_StocksAppTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -220,17 +258,41 @@
 			productReference = 8489A8CE270C6396005B8332 /* StocksApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C3498C042800B79D004F51B6 /* StocksAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3498C0D2800B79D004F51B6 /* Build configuration list for PBXNativeTarget "StocksAppTests" */;
+			buildPhases = (
+				C038917A011976C2148E9425 /* [CP] Check Pods Manifest.lock */,
+				C3498C012800B79D004F51B6 /* Sources */,
+				C3498C022800B79D004F51B6 /* Frameworks */,
+				C3498C032800B79D004F51B6 /* Resources */,
+				921BADF5CF1252567A5DA372 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3498C0A2800B79D004F51B6 /* PBXTargetDependency */,
+			);
+			name = StocksAppTests;
+			productName = StocksAppTests;
+			productReference = C3498C052800B79D004F51B6 /* StocksAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		8489A8C6270C6396005B8332 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					8489A8CD270C6396005B8332 = {
 						CreatedOnToolsVersion = 12.5;
+					};
+					C3498C042800B79D004F51B6 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 8489A8CD270C6396005B8332;
 					};
 				};
 			};
@@ -248,6 +310,7 @@
 			projectRoot = "";
 			targets = (
 				8489A8CD270C6396005B8332 /* StocksApp */,
+				C3498C042800B79D004F51B6 /* StocksAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -259,6 +322,13 @@
 			files = (
 				8489A8DE270C639A005B8332 /* LaunchScreen.storyboard in Resources */,
 				8489A8DB270C639A005B8332 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3498C032800B79D004F51B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +374,45 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StocksApp/Pods-StocksApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		921BADF5CF1252567A5DA372 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StocksAppTests/Pods-StocksAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StocksAppTests/Pods-StocksAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StocksAppTests/Pods-StocksAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C038917A011976C2148E9425 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StocksAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -335,7 +444,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3498C012800B79D004F51B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3498C082800B79D004F51B6 /* StocksAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C3498C0A2800B79D004F51B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8489A8CD270C6396005B8332 /* StocksApp */;
+			targetProxy = C3498C092800B79D004F51B6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8489A8DC270C639A005B8332 /* LaunchScreen.storyboard */ = {
@@ -400,7 +525,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -455,7 +580,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -507,6 +632,58 @@
 			};
 			name = Release;
 		};
+		C3498C0B2800B79D004F51B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3432CCFF1F57363604A7E9B2 /* Pods-StocksAppTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CNZQML8WFZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jbnii.StocksAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StocksApp.app/StocksApp";
+			};
+			name = Debug;
+		};
+		C3498C0C2800B79D004F51B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33FC30372E857F509766F294 /* Pods-StocksAppTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CNZQML8WFZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jbnii.StocksAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StocksApp.app/StocksApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -524,6 +701,15 @@
 			buildConfigurations = (
 				8489A8E3270C639A005B8332 /* Debug */,
 				8489A8E4270C639A005B8332 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3498C0D2800B79D004F51B6 /* Build configuration list for PBXNativeTarget "StocksAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3498C0B2800B79D004F51B6 /* Debug */,
+				C3498C0C2800B79D004F51B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

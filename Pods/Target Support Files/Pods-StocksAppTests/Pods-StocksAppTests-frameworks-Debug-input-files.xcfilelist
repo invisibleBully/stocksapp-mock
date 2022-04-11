@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-StocksAppTests/Pods-StocksAppTests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework
+${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
+${BUILT_PRODUCTS_DIR}/SwiftAlgorithms/Algorithms.framework
